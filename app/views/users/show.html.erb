@@ -3,6 +3,19 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"><%= @user.name %></h3>
+                <div class="card-header">
+                    Age
+                </div>
+                <div class="card-body">
+                    <%= @user.age %>
+                </div>
+                <div class="card-header">
+                    About Me
+                </div>
+                <div class="card-body">
+                    <%= @user.selfintroduction %>
+                </div>
+                <%= link_to 'Edit Profile', edit_user_path(@user) %>
             </div>
             <div class="card-body">
                 <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 })%>" alt="">
