@@ -7,4 +7,7 @@ class User < ApplicationRecord
     validates :age, numericality: { only_integer: true }
     validates :selfintroduction, length: { maximum: 140 }
     has_secure_password
+    
+    has_many:microposts
+    
 end
