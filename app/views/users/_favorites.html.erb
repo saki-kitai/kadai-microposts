@@ -1,0 +1,24 @@
+<% if favoriteposts.any? %>
+    <ul class="list-unstyled">
+        <% favoriteposts.each do |favoritepost| %>
+            <li class="media mb-3">
+                <img class="mr-2 rounded" src="<%= gravatar_url(favoritepost.user, { size: 50 }) %>" alt="">
+                <div class="media-body">
+                    <div>
+                        <%= link_to favoritepost.user.name, user_path(favoritepost.user) %> <span class="text-muted">posted at <%= favoritepost.created_at %></span>
+                    </div>
+                    <div>
+                        <p><%= favoritepost.content %></p>
+                    </div>
+                    <div class="row">
+                        <% if current_user == favoritepost.user %>
+                            <%= link_to "Delete", favoritepost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                        <% end %>
+                        <%= render 'favorites/like_button', micropost: favoritepost %>
+                    </div>
+                </div>
+            </li>
+        <% end %>
+    <%= paginate favoriteposts %>
+    </ul>
+<% end %>
