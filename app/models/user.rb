@@ -49,9 +49,4 @@ class User < ApplicationRecord
         self.favorite_posts.include?(micropost)
     end 
     
-    def feed_likes
-        
-    end 
-    
-    
 end
